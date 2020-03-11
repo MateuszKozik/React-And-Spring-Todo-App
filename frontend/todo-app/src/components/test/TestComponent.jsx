@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function TestComponent() {
+function TestComponent() {
     return (
       <div className="testComponent">
         Test
@@ -8,3 +8,4 @@ export default function TestComponent() {
     );
   }
   
+export default TestComponent;
