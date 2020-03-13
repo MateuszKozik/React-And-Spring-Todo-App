@@ -11,14 +11,8 @@ class AuthenticationService{
 
     isUserLoggedIn() {
         let user = sessionStorage.getItem('authenticatedUser')
-        if(user===null) {
-            console.log('nie')
-            return false
-        }else{
-            console.log('tak')
+        if(user===null) return false
             return true
-        }
-
     }
 }
 
