@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 
 class TodoApp extends Component{
 
@@ -27,9 +27,9 @@ class ListTodosComponent extends Component {
         this.state = {
             todos :
             [
-                {id: 1, descrition: 'First task'},
-                {id: 2, descrition: 'Second task'},
-                {id: 3, descrition: 'Third task'},
+                {id: 1, description: 'First task', done: false, targetDate: new Date()},
+                {id: 2, description: 'Second task', done: false, targetDate: new Date()},
+                {id: 3, description: 'Third task', done: false, targetDate: new Date()},
             ]
         }
     }
@@ -43,6 +43,8 @@ class ListTodosComponent extends Component {
                         <tr>
                             <th>ID</th>
                             <th>Description</th>
+                            <th>Is completed?</th>
+                            <th>Target Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +53,9 @@ class ListTodosComponent extends Component {
                             todo =>
                             <tr>
                                 <td>{todo.id}</td>
-                                <td>{todo.descrition}</td>
+                                <td>{todo.description}</td>
+                                <td>{todo.done.toString()}</td>
+                                <td>{todo.targetDate.toString()}</td>
                             </tr>
                         )
                     }
@@ -67,7 +71,7 @@ class WelcomeComponent extends Component {
     render(){
         return (
             <div>
-                Welcome {this.props.match.params.name}
+                Welcome {this.props.match.params.name}. You can manage your todos <Link to="/todos"> here</Link>
             </div>
         )
     }
