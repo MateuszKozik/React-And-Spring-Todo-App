@@ -1,6 +1,7 @@
 package com.kozik.todos.entities;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Todo {
     private Long id;
@@ -63,4 +64,22 @@ public class Todo {
     public void setIsDone(Boolean isDone) {
         this.isDone = isDone;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Todo)) {
+            return false;
+        }
+        Todo todo = (Todo) o;
+        return Objects.equals(id, todo.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
 }
