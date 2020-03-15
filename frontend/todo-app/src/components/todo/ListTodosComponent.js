@@ -12,6 +12,7 @@ class ListTodosComponent extends Component {
         }
         this.deteteTodoClicked = this.deteteTodoClicked.bind(this)
         this.refreshTodos = this.refreshTodos.bind(this)
+        this.updateTodoClicked = this.updateTodoClicked.bind(this)
     }
 
     shouldComponentUpdate(nextProps, nextState){
@@ -39,6 +40,10 @@ class ListTodosComponent extends Component {
             })
     }
 
+    updateTodoClicked(id) {
+        this.props.history.push(`/todos/${id}`)
+    }
+
     render(){
         return (
             <div>
@@ -51,7 +56,7 @@ class ListTodosComponent extends Component {
                                 <th>Description</th>
                                 <th>Is completed?</th>
                                 <th>Target Date</th>
-                                <th>Delete</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,7 +67,10 @@ class ListTodosComponent extends Component {
                                     <td>{todo.description}</td>
                                     <td>{todo.isDone.toString()}</td>
                                     <td>{todo.targetDate.toString()}</td>
-                                    <td><button className="btn btn-warning" onClick={() => this.deteteTodoClicked(todo.id)}>Delete</button></td>
+                                    <td>
+                                        <button className="btn btn-primary" onClick={() => this.updateTodoClicked(todo.id)}>Update</button>
+                                        <button className="btn btn-danger ml-2" onClick={() => this.deteteTodoClicked(todo.id)}>Delete</button>
+                                    </td>
                                 </tr>
                             )
                         }
