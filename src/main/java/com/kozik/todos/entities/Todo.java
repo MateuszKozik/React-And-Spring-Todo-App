@@ -12,6 +12,14 @@ public class Todo {
     public Todo() {
     }
 
+    public Todo(Long id, String username, String description, Date targetDate, Boolean isDone) {
+        this.id = id;
+        this.username = username;
+        this.description = description;
+        this.targetDate = targetDate;
+        this.isDone = isDone;
+    }
+
     public Long getId() {
         return this.id;
     }
