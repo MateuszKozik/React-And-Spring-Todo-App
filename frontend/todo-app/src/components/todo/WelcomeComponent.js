@@ -31,14 +31,14 @@ class WelcomeComponent extends Component {
         )
     }
     retrieveWelcomeMessage(){
-        HelloWorldService.executeHelloWorldService()
+        HelloWorldService.executeHelloWorldBeanService()
         .then(response => this.handleSuccessfulResponse(response))
         //.catch()
     }
 
     handleSuccessfulResponse(response){
         this.setState({
-            welcomeMessage: response.data
+            welcomeMessage: response.data.message
         })
     }
 }
