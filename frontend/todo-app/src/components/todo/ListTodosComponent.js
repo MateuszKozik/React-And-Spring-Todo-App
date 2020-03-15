@@ -11,6 +11,10 @@ class ListTodosComponent extends Component {
         }
     }
 
+    shouldComponentUpdate(nextProps, nextState){
+        return true
+    }
+
     componentDidMount() {
         let username = AuthenticationService.getLoggedInUserName
         TodoDataService.retieveAllTodos(username)
