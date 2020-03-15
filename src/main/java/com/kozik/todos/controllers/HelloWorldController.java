@@ -23,7 +23,7 @@ public class HelloWorldController {
 
     @GetMapping("/hello-world/path-variable/{name}")
     public Message helloWorldPathVariable(@PathVariable String name){
-       throw new RuntimeException("Something went wrong");
-        // return new Message("Hello World,  " + name);
+       //throw new RuntimeException("Something went wrong");
+        return new Message("Hello World,  " + name);
     }
 }
