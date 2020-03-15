@@ -20,8 +20,8 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
-    @GetMapping("/users/{user_name}/todos")
-    public List<Todo> getAllTodos(String username){
+    @GetMapping("/users/{username}/todos")
+    public List<Todo> getAllTodos(@PathVariable String username){
         return todoService.findAll();
     }
 
