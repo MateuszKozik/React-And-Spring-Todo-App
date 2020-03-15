@@ -11,6 +11,7 @@ class ListTodosComponent extends Component {
             message : null
         }
         this.deteteTodoClicked = this.deteteTodoClicked.bind(this)
+        this.refreshTodos = this.refreshTodos.bind(this)
     }
 
     shouldComponentUpdate(nextProps, nextState){
@@ -18,6 +19,10 @@ class ListTodosComponent extends Component {
     }
 
     componentDidMount() {
+        this.refreshTodos()
+    }
+
+    refreshTodos() {
         let username = AuthenticationService.getLoggedInUserName()
         TodoDataService.retieveAllTodos(username)
             .then( response => {
@@ -29,7 +34,8 @@ class ListTodosComponent extends Component {
         let username = AuthenticationService.getLoggedInUserName()
         TodoDataService.deleteTodo(username, id)
             .then( response => {
-                this.setState({message : `Delete of todo ${id}`})
+                this.setState({message : `Delete of todo ${id} Successful`})
+                this.refreshTodos()
             })
     }
 
