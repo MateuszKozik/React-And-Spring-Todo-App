@@ -25,14 +25,15 @@ class LoginComponent extends Component{
     }
 
     loginClicked(){
-        if(this.state.username === 'test' && this.state.password === 'test'){
-            AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
-            this.props.history.push(`/welcome/${this.state.username}`)
-        }
-        else{
-            this.setState({showSuccessMessage:false})
-            this.setState({hasLoginFailed:true})
-        }
+        AuthenticationService
+            .executeBasicAuthenticationService(this.state.username, this.state.password)
+            .then(() => {
+                AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
+                this.props.history.push(`/welcome/${this.state.username}`)
+            }).catch(() => {
+                this.setState({showSuccessMessage:false})
+                this.setState({hasLoginFailed:true})
+            })
     }
 
     render(){
@@ -40,7 +41,7 @@ class LoginComponent extends Component{
             <div>
                 <h1>Login</h1>
                 <div className="container">
-                    {this.state.hasLoginFailed && <div className="aler alert-warning">Invalid Credentials</div>}
+                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
                     {this.state.showSuccessMessage && <div>Login success</div>}
                     <div className="form-group">
                         <label>User name</label>
