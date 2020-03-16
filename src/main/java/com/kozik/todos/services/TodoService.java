@@ -43,7 +43,7 @@ public class TodoService {
     }
 
     public Todo save(Todo todo){
-        if(todo.getId()==null){
+        if(todo.getId()==null || todo.getId() == -1){
             todo.setId(++idCounter);
             todos.add(todo);
         }else{

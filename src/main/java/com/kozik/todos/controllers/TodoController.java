@@ -53,7 +53,7 @@ public class TodoController {
 
     }
 
-    @PostMapping("/users//{username}/todos")
+    @PostMapping("/users/{username}/todos")
     public ResponseEntity<?> update(@PathVariable String username, @RequestBody Todo todo){
         Todo createdTodo = todoService.save(todo);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
